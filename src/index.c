@@ -11,7 +11,7 @@
  */ 
 struct index
 {
-
+	list_t *documents;
 };
 
 /*
@@ -20,13 +20,15 @@ struct index
  */
 struct search_result
 {
-
+	int content_length;
+	list_t *documents;
+	list_t *hit_list;
 };
 
 
 static inline int cmp_ints(void *a, void *b)
 {
-    return *((int *)a) - *((int *)b);
+	return *((int *)a) - *((int *)b);
 }
 
 /*
@@ -34,7 +36,7 @@ static inline int cmp_ints(void *a, void *b)
  */ 
 static inline int cmp_strs(void *a, void *b)
 {
-    return strcasecmp((const char *)a, (const char *)b);
+	return strcasecmp((const char *)a, (const char *)b);
 }
 
 
@@ -44,7 +46,8 @@ static inline int cmp_strs(void *a, void *b)
  */
 index_t *index_create()
 {
-    return NULL;
+	index_t *idx = malloc(sizeof(index_t));
+	idx->documents = NULL;
 }
 
 
@@ -54,7 +57,7 @@ index_t *index_create()
  */
 void index_destroy(index_t *index)
 {
-    
+	
 }
 
 
@@ -64,7 +67,9 @@ void index_destroy(index_t *index)
  */
 void index_add_document(index_t *idx, char *document_name, list_t *words)
 {
-    
+	idx->documents = list_create(compare_pointers);
+	list_addlast(idx->documents, words);
+	free(document_name);
 }
 
 
@@ -74,7 +79,30 @@ void index_add_document(index_t *idx, char *document_name, list_t *words)
  */
 search_result_t *index_find(index_t *idx, char *query)
 {
-    return NULL;
+	search_result_t *res = malloc(sizeof(search_result_t));
+	res->documents = list_create(compare_pointers);
+
+	list_iter_t *doc_iter, *word_iter;
+	void *curr_doc, *curr_word;
+		
+	// Iterate through documents
+	doc_iter = list_createiter(idx->documents);
+	while (list_hasnext(doc_iter))
+		curr_doc = list_next(doc_iter);
+
+		// Iterate through words in document
+		word_iter = list_createiter(curr_doc);
+		while (list_hasnext(word_iter))
+			curr_word = list_next(word_iter);
+
+			// Add current word to content
+
+			// If current word is query add to hit list
+			if (curr_word == query)
+				
+
+	res->content_length = strlen(query);
+	return res;
 }
 
 
@@ -85,7 +113,7 @@ search_result_t *index_find(index_t *idx, char *query)
  */ 
 char *autocomplete(index_t *idx, char *input, size_t size)
 {
-    return NULL;
+	return NULL;
 }
 
 
@@ -97,7 +125,10 @@ char *autocomplete(index_t *idx, char *input, size_t size)
  */
 char **result_get_content(search_result_t *res)
 {
-    return NULL;
+	char **content;
+	res->content;
+
+	return content;
 }
 
 
@@ -107,7 +138,7 @@ char **result_get_content(search_result_t *res)
  */
 int result_get_content_length(search_result_t *res)
 {
-    return NULL;
+	return NULL;
 }
 
 
@@ -118,5 +149,5 @@ int result_get_content_length(search_result_t *res)
  */
 search_hit_t *result_next(search_result_t *res)
 {
-    return NULL;
+	return NULL;
 }
