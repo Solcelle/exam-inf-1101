@@ -84,7 +84,7 @@ void main_program_loop()
         ERROR_PRINT("An error occurred while setting a signal handler.\n");
         exit(1);
     }
-
+    
     while (1)
     {
         char *query = ui_main(idx);

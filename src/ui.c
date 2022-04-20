@@ -37,7 +37,6 @@ void ui_init()
 {
     initscr();
     cbreak();
-
     keypad(stdscr, TRUE);    
     start_color();
     init_pair(1, COLOR_BLACK, COLOR_CYAN);
