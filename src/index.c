@@ -22,10 +22,10 @@ struct index
  */
 struct search_result
 {
-	char **content;
-	list_t *hit_list;
+	list_t *index;
 	list_t *doc;
 	list_t *doc_length;
+	search_hit_t *hit;
 };
 
 
@@ -74,33 +74,58 @@ void index_destroy(index_t *index)
 void index_add_document(index_t *idx, char *document_name, list_t *words)
 {	
 	int i;
-	void *curr;
+	char *curr;
 	char **content = malloc((sizeof(char *)) * list_size(words));
-	// idx->content = malloc((sizeof(char *)) * list_size(words));
 	list_iter_t *iter = list_createiter(words);
 
 	// Loops through all words
-	for (i = 0; list_hasnext(words); i++) {
-		curr = (char *) list_next(words);
+	for (i = 0; list_hasnext(iter); i++) {
+		curr = (char *) list_next(iter);
 
 		// Adds word to content
 		content[i] = curr;
+		
+		int len = (int) strlen(curr);
+		char *key = malloc(sizeof(char) * len);
+
+		// Removes uppercase letters from key
+		for (int i = 0; i < len; i++) {
+            if (isupper(curr[i]))  
+                key[i] = tolower(curr[i]);
+			else
+				key[i] = curr[i];
+        }
+
+		// if (i == 2) {
+		// 	DEBUG_PRINT(curr);
+		// 	DEBUG_PRINT(key);
+		// }
+
+		// if (!strcmp(curr, key))
+		// 	DEBUG_PRINT("%d\n", i);
 
 		// If word is new creates new list in hashmap
-		if (!map_haskey(idx->map, curr)) {
+		if (!map_haskey(idx->map, key)) {
 			list_t *new_list = list_create(compare_pointers);
-			list_addlast(new_list, i);
-			map_put(idx->map, curr, new_list);
+			void *p_index = malloc(sizeof(int));
+			*((int*)p_index) = i;
+			list_addlast(new_list, p_index);
+			map_put(idx->map, key, new_list);
 		}
 		// Else add word to corresponding list in hashmap
 		else {
-			void *list = map_get(idx->map, curr);
-			list_addlast(list, i);
+			void *list = map_get(idx->map, key);
+			void *p_index = malloc(sizeof(int));
+			*((int*)p_index) = i;
+			list_addlast(list, p_index);
 		}
+		free(key);
 	}
 	// Adds content of document to idx
 	list_addlast(idx->doc, content);
-	list_addlast(idx->doc_length, i);
+	void *p_doc_len = malloc(sizeof(int));
+	*((int*)p_doc_len) = i;
+	list_addlast(idx->doc_length, p_doc_len);
 
 	// char *s = "the";
 	// void *test_list = map_get(idx->map, s);
@@ -117,15 +142,29 @@ void index_add_document(index_t *idx, char *document_name, list_t *words)
 search_result_t *index_find(index_t *idx, char *query)
 {
 	search_result_t *res = malloc(sizeof(search_result_t));
+	search_hit_t *hit = malloc(sizeof(search_hit_t));
+	res->hit = hit;
 
+
+	// Gets location list of query from index to result
 	if (map_haskey(idx->map, query)) {
 		void *list = map_get(idx->map, query);
-		res->hit_list = list;
-	}
-	res->doc = idx->doc;
-	res->doc_length = idx->doc_length;
+		// Update result
 
-	return res;
+		res->index = list;
+		res->hit->len = (int) strlen(query);		
+		res->hit->location = 0;
+		res->doc = idx->doc;
+		res->doc_length = idx->doc_length;
+		
+		return res;
+	}
+	
+	else {
+		DEBUG_PRINT("Query not found in document\n");
+		return NULL;
+	}
+	
 }
 
 
@@ -150,8 +189,7 @@ char **result_get_content(search_result_t *res)
 {
 	list_iter_t *iter = list_createiter(res->doc);
 	if (list_hasnext(iter)) {
-		char **content = (char **) list_popfirst(iter);
-		DEBUG_PRINT(content[6]);
+		char **content = (char **) list_popfirst(res->doc);
 		return content;
 	}
 	else {
@@ -166,10 +204,10 @@ char **result_get_content(search_result_t *res)
  */
 int result_get_content_length(search_result_t *res)
 {
-	list_iter_t *iter = list_createiter(res->doc);
+	list_iter_t *iter = list_createiter(res->doc_length);
 	if (list_hasnext(iter)) {
-		int length = list_popfirst(iter);
-		DEBUG_PRINT("%d\n", length);
+		void *i = list_popfirst(res->doc_length);
+		int length = *(int*) i;
 		return length;
 	}
 	else {
@@ -185,7 +223,15 @@ int result_get_content_length(search_result_t *res)
  */
 search_hit_t *result_next(search_result_t *res)
 {
+	list_iter_t *iter = list_createiter(res->index);
+	if (list_hasnext(iter)) {
+		void *i = list_popfirst(res->index);
+		res->hit->location = *(int*) i;
+		DEBUG_PRINT("location: %i\n", *(int*) i);
+		return res->hit;
+	}
 
-
-	return NULL;
+	else {
+		return NULL;
+	}
 }

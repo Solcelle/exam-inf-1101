@@ -103,7 +103,7 @@ char *ui_main(index_t *idx)
 
     clear();
     row = getmaxy(stdscr);
-    DEBUG_PRINT("%d", row);
+    // DEBUG_PRINT("%d", row);
     ui_display_main_help(row);
     ui_display_input(NULL, NULL, cur_word_len);
 
@@ -306,7 +306,6 @@ void ui_result(search_result_t *res)
 
     row = getmaxy(stdscr);
     clear();
-
     ui_display_results_help(row, cur_pos);
 
     if (content == NULL || cur_pos == NULL)
