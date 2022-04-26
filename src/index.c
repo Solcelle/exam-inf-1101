@@ -5,6 +5,7 @@
 #include "map.h"
 #include "printing.h"
 #include "trie.h"
+#include "ctype.h"
 
 /*
  * Implement your index here.
@@ -90,17 +91,23 @@ void index_add_document(index_t *idx, char *document_name, list_t *words)
 
 		// Removes uppercase letters from key
 		for (int i = 0; i < len; i++) {
-            if (isupper(curr[i]))  
-                key[i] = tolower(curr[i]);
-			else
-				key[i] = curr[i];
+            // if (isupper(curr[i]))  
+            //     key[i] = tolower(curr[i]);
+			// else
+			key[i] = curr[i];
         }
-
 		// if (i == 2) {
 		// 	DEBUG_PRINT(curr);
 		// 	DEBUG_PRINT(key);
 		// }
-
+		char *tmp = "church";
+		if (!strcmp(curr, tmp)){
+			DEBUG_PRINT(curr);
+			if (!strcmp(curr, key))
+				DEBUG_PRINT("%s %d", key, i);
+			// else
+			// 	DEBUG_PRINT("%s %d", key, i);
+		}
 		// if (!strcmp(curr, key))
 		// 	DEBUG_PRINT("%d\n", i);
 
@@ -145,6 +152,7 @@ search_result_t *index_find(index_t *idx, char *query)
 	search_hit_t *hit = malloc(sizeof(search_hit_t));
 	res->hit = hit;
 
+	DEBUG_PRINT(query);
 
 	// Gets location list of query from index to result
 	if (map_haskey(idx->map, query)) {
