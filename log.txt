@@ -1,1 +1,6 @@
-[1;33m[DEBUG][src/index.c 105]: [0mchurch[1;33m[DEBUG][src/index.c 105]: [0mchurch[1;33m[DEBUG][src/index.c 105]: [0mchurch[1;33m[DEBUG][src/index.c 105]: [0mchurch[1;33m[DEBUG][src/index.c 155]: [0mthe[1;33m[DEBUG][src/index.c 172]: [0mQuery not found in document
+[1;33m[DEBUG][src/index.c 117]: [0m2[1;33m[DEBUG][src/index.c 156]: [0mthe[1;33m[DEBUG][src/index.c 239]: [0mlocation: 0
+[1;33m[DEBUG][src/index.c 239]: [0mlocation: 37
+[1;33m[DEBUG][src/index.c 239]: [0mlocation: 106
+[1;33m[DEBUG][src/index.c 156]: [0mthe[1;33m[DEBUG][src/index.c 239]: [0mlocation: 281
+[1;33m[DEBUG][src/index.c 156]: [0mthe[1;33m[DEBUG][src/index.c 239]: [0mlocation: 366
+[1;33m[DEBUG][src/index.c 239]: [0mlocation: 634

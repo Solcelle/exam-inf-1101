@@ -91,28 +91,30 @@ void index_add_document(index_t *idx, char *document_name, list_t *words)
 
 		// Removes uppercase letters from key
 		for (int i = 0; i < len; i++) {
-            // if (isupper(curr[i]))  
-            //     key[i] = tolower(curr[i]);
-			// else
+            if (isupper(curr[i]))  
+                key[i] = tolower(curr[i]);
+			else
 			key[i] = curr[i];
         }
 		// if (i == 2) {
 		// 	DEBUG_PRINT(curr);
 		// 	DEBUG_PRINT(key);
 		// }
-		char *tmp = "church";
-		if (!strcmp(curr, tmp)){
-			DEBUG_PRINT(curr);
-			if (!strcmp(curr, key))
-				DEBUG_PRINT("%s %d", key, i);
-			// else
-			// 	DEBUG_PRINT("%s %d", key, i);
-		}
+		// char *tmp = "Tragedy";
+		// if (!strcmp(curr, tmp)){
+		// 	if (!strcmp(curr, key))
+		// 		DEBUG_PRINT("%s %d", key, i);
+		// 	else
+		// 		DEBUG_PRINT("%s", key);
+		// }
 		// if (!strcmp(curr, key))
 		// 	DEBUG_PRINT("%d\n", i);
 
 		// If word is new creates new list in hashmap
 		if (!map_haskey(idx->map, key)) {
+			// char *tmp = "tragedy";
+			// if (!strcmp(key, tmp))
+			// 	DEBUG_PRINT("%d", i);
 			list_t *new_list = list_create(compare_pointers);
 			void *p_index = malloc(sizeof(int));
 			*((int*)p_index) = i;
@@ -126,7 +128,6 @@ void index_add_document(index_t *idx, char *document_name, list_t *words)
 			*((int*)p_index) = i;
 			list_addlast(list, p_index);
 		}
-		free(key);
 	}
 	// Adds content of document to idx
 	list_addlast(idx->doc, content);
