@@ -7,7 +7,7 @@
 #include "printing.h"
 
 #define TRIE_RADIX 26
-#define ASCII_TO_IDX(c) c - 98
+#define ASCII_TO_IDX(c) c - 97
 
 
 typedef struct node node_t;

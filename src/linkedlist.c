@@ -315,3 +315,7 @@ void *list_next(list_iter_t *iter)
     }
 }
 
+void *list_getlast(list_t *list)
+{
+	return list->tail->elem;
+}

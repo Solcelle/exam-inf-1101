@@ -1,4 +1,12 @@
-
+/*! \mainpage Exam Documentation INF-1101
+ *
+ * \section intro_sec Introduction
+ *
+ * This is the documentation for  the home exam in INF-1101.
+ * 
+ * In the top section you can find links to the different files and data structures.
+ * Generally only the `.h` files are documented, but it is possible to view the `.c` files as well.
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -84,7 +92,7 @@ void main_program_loop()
         ERROR_PRINT("An error occurred while setting a signal handler.\n");
         exit(1);
     }
-    
+
     while (1)
     {
         char *query = ui_main(idx);

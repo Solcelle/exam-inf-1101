@@ -15,6 +15,7 @@ struct index
 	map_t *map;
 	list_t *doc;
 	list_t *doc_length;
+	char *curr_doc;
 };
 
 /*
@@ -24,6 +25,7 @@ struct index
 struct search_result
 {
 	list_t *index;
+	list_iter_t *index_iter;
 	list_t *doc;
 	list_t *doc_length;
 	search_hit_t *hit;
@@ -54,6 +56,7 @@ index_t *index_create()
 	idx->map = map_create(compare_strings, hash_string);
 	idx->doc = list_create(compare_pointers);
 	idx->doc_length = list_create(compare_pointers);
+	idx->curr_doc = NULL;
 	return idx;
 }
 
@@ -76,8 +79,17 @@ void index_add_document(index_t *idx, char *document_name, list_t *words)
 {	
 	int i;
 	char *curr;
+	int new_doc = 0;
 	char **content = malloc((sizeof(char *)) * list_size(words));
 	list_iter_t *iter = list_createiter(words);
+
+	if (idx->curr_doc == NULL) {
+		idx->curr_doc = document_name;
+		}
+	else if (strcmp(idx->curr_doc, document_name)) {
+		idx->curr_doc = document_name;
+		new_doc = 1;
+		}
 
 	// Loops through all words
 	for (i = 0; list_hasnext(iter); i++) {
@@ -96,25 +108,9 @@ void index_add_document(index_t *idx, char *document_name, list_t *words)
 			else
 			key[i] = curr[i];
         }
-		// if (i == 2) {
-		// 	DEBUG_PRINT(curr);
-		// 	DEBUG_PRINT(key);
-		// }
-		// char *tmp = "Tragedy";
-		// if (!strcmp(curr, tmp)){
-		// 	if (!strcmp(curr, key))
-		// 		DEBUG_PRINT("%s %d", key, i);
-		// 	else
-		// 		DEBUG_PRINT("%s", key);
-		// }
-		// if (!strcmp(curr, key))
-		// 	DEBUG_PRINT("%d\n", i);
 
 		// If word is new creates new list in hashmap
 		if (!map_haskey(idx->map, key)) {
-			// char *tmp = "tragedy";
-			// if (!strcmp(key, tmp))
-			// 	DEBUG_PRINT("%d", i);
 			list_t *new_list = list_create(compare_pointers);
 			void *p_index = malloc(sizeof(int));
 			*((int*)p_index) = i;
@@ -123,7 +119,16 @@ void index_add_document(index_t *idx, char *document_name, list_t *words)
 		}
 		// Else add word to corresponding list in hashmap
 		else {
-			void *list = map_get(idx->map, key);
+			list_t *list = map_get(idx->map, key);
+			void *last_num = list_getlast(list);
+			char *tmp = "treasure";
+			if (!strcmp(key, tmp))
+				DEBUG_PRINT("%d", *(int*) last_num);
+			if (new_doc && (*(int*) last_num) != -1) {
+				void *spacer = malloc(sizeof(int));
+				*((int*)spacer) = -1;
+				list_addlast(list, spacer);
+			}
 			void *p_index = malloc(sizeof(int));
 			*((int*)p_index) = i;
 			list_addlast(list, p_index);
@@ -159,8 +164,8 @@ search_result_t *index_find(index_t *idx, char *query)
 	if (map_haskey(idx->map, query)) {
 		void *list = map_get(idx->map, query);
 		// Update result
-
 		res->index = list;
+		res->index_iter = list_createiter(res->index);
 		res->hit->len = (int) strlen(query);		
 		res->hit->location = 0;
 		res->doc = idx->doc;
@@ -232,9 +237,12 @@ int result_get_content_length(search_result_t *res)
  */
 search_hit_t *result_next(search_result_t *res)
 {
-	list_iter_t *iter = list_createiter(res->index);
-	if (list_hasnext(iter)) {
-		void *i = list_popfirst(res->index);
+	if (list_hasnext(res->index_iter)) {
+		void *i = list_next(res->index_iter);
+		if ((*(int*) i) == -1) {
+			DEBUG_PRINT("next document %d", *(int*) i);
+			i = list_next(res->index_iter);
+			}
 		res->hit->location = *(int*) i;
 		DEBUG_PRINT("location: %i\n", *(int*) i);
 		return res->hit;
