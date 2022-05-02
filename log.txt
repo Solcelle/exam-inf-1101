@@ -1,8 +1,53 @@
-[1;33m[DEBUG][src/index.c 126]: [0m2846[1;33m[DEBUG][src/index.c 126]: [0m9836[1;33m[DEBUG][src/index.c 126]: [0m29244[1;33m[DEBUG][src/index.c 126]: [0m29263[1;33m[DEBUG][src/index.c 126]: [0m0[1;33m[DEBUG][src/index.c 126]: [0m14[1;33m[DEBUG][src/index.c 126]: [0m1524[1;33m[DEBUG][src/index.c 126]: [0m1548[1;33m[DEBUG][src/index.c 126]: [0m1673[1;33m[DEBUG][src/index.c 126]: [0m1756[1;33m[DEBUG][src/index.c 126]: [0m1807[1;33m[DEBUG][src/index.c 126]: [0m27547[1;33m[DEBUG][src/index.c 126]: [0m27554[1;33m[DEBUG][src/index.c 126]: [0m27652[1;33m[DEBUG][src/index.c 126]: [0m29258[1;33m[DEBUG][src/index.c 126]: [0m32066[1;33m[DEBUG][src/index.c 126]: [0m32288[1;33m[DEBUG][src/index.c 126]: [0m34066[1;33m[DEBUG][src/index.c 126]: [0m39376[1;33m[DEBUG][src/index.c 126]: [0m39400[1;33m[DEBUG][src/index.c 126]: [0m39415[1;33m[DEBUG][src/index.c 126]: [0m40381[1;33m[DEBUG][src/index.c 126]: [0m43182[1;33m[DEBUG][src/index.c 126]: [0m43274[1;33m[DEBUG][src/index.c 126]: [0m46254[1;33m[DEBUG][src/index.c 126]: [0m56754[1;33m[DEBUG][src/index.c 126]: [0m57775[1;33m[DEBUG][src/index.c 126]: [0m58898[1;33m[DEBUG][src/index.c 126]: [0m67659[1;33m[DEBUG][src/index.c 126]: [0m67918[1;33m[DEBUG][src/index.c 126]: [0m68043[1;33m[DEBUG][src/index.c 126]: [0m79669[1;33m[DEBUG][src/index.c 126]: [0m86927[1;33m[DEBUG][src/index.c 126]: [0m87634[1;33m[DEBUG][src/index.c 126]: [0m87705[1;33m[DEBUG][src/index.c 126]: [0m88213[1;33m[DEBUG][src/index.c 126]: [0m95849[1;33m[DEBUG][src/index.c 126]: [0m97615[1;33m[DEBUG][src/index.c 126]: [0m101513[1;33m[DEBUG][src/index.c 126]: [0m102231[1;33m[DEBUG][src/index.c 126]: [0m108957[1;33m[DEBUG][src/index.c 126]: [0m123683[1;33m[DEBUG][src/index.c 126]: [0m129408[1;33m[DEBUG][src/index.c 126]: [0m131292[1;33m[DEBUG][src/index.c 126]: [0m136973[1;33m[DEBUG][src/index.c 126]: [0m137043[1;33m[DEBUG][src/index.c 126]: [0m137704[1;33m[DEBUG][src/index.c 126]: [0m137898[1;33m[DEBUG][src/index.c 126]: [0m138500[1;33m[DEBUG][src/index.c 126]: [0m138780[1;33m[DEBUG][src/index.c 126]: [0m139323[1;33m[DEBUG][src/index.c 126]: [0m141204[1;33m[DEBUG][src/index.c 126]: [0m142859[1;33m[DEBUG][src/index.c 126]: [0m146613[1;33m[DEBUG][src/index.c 126]: [0m146725[1;33m[DEBUG][src/index.c 126]: [0m149569[1;33m[DEBUG][src/index.c 126]: [0m150260[1;33m[DEBUG][src/index.c 126]: [0m150904[1;33m[DEBUG][src/index.c 126]: [0m151375[1;33m[DEBUG][src/index.c 126]: [0m152178[1;33m[DEBUG][src/index.c 126]: [0m153851[1;33m[DEBUG][src/index.c 126]: [0m154504[1;33m[DEBUG][src/ui.c 107]: [0m30[1;33m[DEBUG][src/index.c 161]: [0mtreasure[1;33m[DEBUG][src/index.c 247]: [0mlocation: 2846
-[1;33m[DEBUG][src/index.c 247]: [0mlocation: 9836
-[1;33m[DEBUG][src/index.c 247]: [0mlocation: 29244
-[1;33m[DEBUG][src/index.c 247]: [0mlocation: 29263
-[1;33m[DEBUG][src/index.c 243]: [0mnext document -1[1;33m[DEBUG][src/index.c 247]: [0mlocation: 0
-[1;33m[DEBUG][src/index.c 243]: [0mnext document -1[1;33m[DEBUG][src/index.c 247]: [0mlocation: 14
-[1;33m[DEBUG][src/index.c 243]: [0mnext document -1[1;33m[DEBUG][src/index.c 247]: [0mlocation: 1524
-[1;33m[DEBUG][src/index.c 243]: [0mnext document -1[1;33m[DEBUG][src/index.c 247]: [0mlocation: 1548
+[1;33m[DEBUG][src/ui.c 107]: [0m30[1;33m[DEBUG][src/index.c 126]: [0msize: 2[1;33m[DEBUG][src/index.c 132]: [0mQuerey found in doc
+[1;33m[DEBUG][src/index.c 142]: [0mhere[1;33m[DEBUG][src/index.c 132]: [0mQuerey found in doc
+[1;33m[DEBUG][src/index.c 142]: [0mhere[1;33m[DEBUG][src/index.c 181]: [0mlocation: 2846
+[1;33m[DEBUG][src/index.c 181]: [0mlocation: 9836
+[1;33m[DEBUG][src/index.c 181]: [0mlocation: 29244
+[1;33m[DEBUG][src/index.c 181]: [0mlocation: 29263
+[1;33m[DEBUG][src/ui.c 338]: [0mhere[1;33m[DEBUG][src/index.c 181]: [0mlocation: 0
+[1;33m[DEBUG][src/index.c 181]: [0mlocation: 1524
+[1;33m[DEBUG][src/index.c 181]: [0mlocation: 1548
+[1;33m[DEBUG][src/index.c 181]: [0mlocation: 1673
+[1;33m[DEBUG][src/index.c 181]: [0mlocation: 1756
+[1;33m[DEBUG][src/index.c 181]: [0mlocation: 1807
+[1;33m[DEBUG][src/index.c 181]: [0mlocation: 27547
+[1;33m[DEBUG][src/index.c 181]: [0mlocation: 27554
+[1;33m[DEBUG][src/index.c 181]: [0mlocation: 27652
+[1;33m[DEBUG][src/index.c 181]: [0mlocation: 29258
+[1;33m[DEBUG][src/index.c 181]: [0mlocation: 32066
+[1;33m[DEBUG][src/index.c 181]: [0mlocation: 32288
+[1;33m[DEBUG][src/index.c 181]: [0mlocation: 34066
+[1;33m[DEBUG][src/index.c 181]: [0mlocation: 39376
+[1;33m[DEBUG][src/index.c 181]: [0mlocation: 39400
+[1;33m[DEBUG][src/index.c 181]: [0mlocation: 39415
+[1;33m[DEBUG][src/index.c 181]: [0mlocation: 40381
+[1;33m[DEBUG][src/index.c 181]: [0mlocation: 43182
+[1;33m[DEBUG][src/index.c 181]: [0mlocation: 43274
+[1;33m[DEBUG][src/index.c 181]: [0mlocation: 46254
+[1;33m[DEBUG][src/index.c 181]: [0mlocation: 56754
+[1;33m[DEBUG][src/ui.c 107]: [0m30[1;33m[DEBUG][src/index.c 126]: [0msize: 2[1;33m[DEBUG][src/index.c 132]: [0mQuerey found in doc
+[1;33m[DEBUG][src/index.c 142]: [0mhere[1;33m[DEBUG][src/index.c 132]: [0mQuerey found in doc
+[1;33m[DEBUG][src/index.c 142]: [0mhere[1;33m[DEBUG][src/index.c 181]: [0mlocation: 2846
+[1;33m[DEBUG][src/index.c 181]: [0mlocation: 9836
+[1;33m[DEBUG][src/index.c 181]: [0mlocation: 29244
+[1;33m[DEBUG][src/index.c 181]: [0mlocation: 29263
+[1;33m[DEBUG][src/ui.c 338]: [0mhere[1;33m[DEBUG][src/index.c 181]: [0mlocation: 0
+[1;33m[DEBUG][src/index.c 181]: [0mlocation: 1524
+[1;33m[DEBUG][src/index.c 181]: [0mlocation: 1548
+[1;33m[DEBUG][src/index.c 181]: [0mlocation: 1673
+[1;33m[DEBUG][src/index.c 181]: [0mlocation: 1756
+[1;33m[DEBUG][src/index.c 181]: [0mlocation: 1807
+[1;33m[DEBUG][src/index.c 181]: [0mlocation: 27547
+[1;33m[DEBUG][src/index.c 181]: [0mlocation: 27554
+[1;33m[DEBUG][src/index.c 181]: [0mlocation: 27652
+[1;33m[DEBUG][src/index.c 181]: [0mlocation: 29258
+[1;33m[DEBUG][src/index.c 181]: [0mlocation: 32066
+[1;33m[DEBUG][src/index.c 181]: [0mlocation: 32288
+[1;33m[DEBUG][src/index.c 181]: [0mlocation: 34066
+[1;33m[DEBUG][src/index.c 181]: [0mlocation: 39376
+[1;33m[DEBUG][src/ui.c 107]: [0m30[1;33m[DEBUG][src/index.c 126]: [0msize: 2[1;33m[DEBUG][src/index.c 132]: [0mQuerey found in doc
+[1;33m[DEBUG][src/index.c 142]: [0mhere[1;33m[DEBUG][src/index.c 132]: [0mQuerey found in doc
+[1;33m[DEBUG][src/index.c 142]: [0mhere[1;33m[DEBUG][src/index.c 181]: [0mlocation: 72980
+[1;33m[DEBUG][src/ui.c 338]: [0mhere[1;33m[DEBUG][src/index.c 181]: [0mlocation: 7925
+[1;33m[DEBUG][src/index.c 181]: [0mlocation: 142736
+[1;33m[DEBUG][src/ui.c 338]: [0mhere[1;33m[DEBUG][src/ui.c 338]: [0mhere[1;33m[DEBUG][src/ui.c 338]: [0mhere[1;33m[DEBUG][src/ui.c 338]: [0mhere[1;33m[DEBUG][src/ui.c 338]: [0mhere[1;33m[DEBUG][src/ui.c 338]: [0mhere[1;33m[DEBUG][src/ui.c 107]: [0m30

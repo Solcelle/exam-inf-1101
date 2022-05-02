@@ -333,8 +333,9 @@ void ui_result(search_result_t *res)
         }
 
         if (cur_pos == NULL)
-        {
+        {	
             content = result_get_content(res);
+			DEBUG_PRINT("here");
             content_length = result_get_content_length(res);
             if (content == NULL)
             {

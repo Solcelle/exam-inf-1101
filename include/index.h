@@ -23,6 +23,7 @@
  */
 typedef struct index index_t;
 
+typedef struct document document_t;
 
 /**
  * @brief Reference to a single search result.
