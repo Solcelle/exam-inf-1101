@@ -26,8 +26,8 @@ index: src/*.c src/main.c Makefile
 	$(CC) -o $(BIN) $(CFLAGS) $(SRC) src/main.c -I$(INCLUDE) $(LDFLAGS)
 
 
-# test: $(SRC) Makefile
-# 	$(CC) -o test_index $(CFLAGS) $(SRC) src/test.c -I$(INCLUDE) $(LDFLAGS)
+test: $(SRC) Makefile
+	$(CC) -o test_index $(CFLAGS) $(SRC) src/test.c -I$(INCLUDE) $(LDFLAGS)
 
 bench: $(SRC) Makefile
 	$(CC) -o bench_index $(CFLAGS) $(SRC) src/benchmark.c -I$(INCLUDE) $(LDFLAGS)

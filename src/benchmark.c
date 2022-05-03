@@ -98,7 +98,7 @@ int main(int argc, char **argv)
 
         // Test find on existing word
         before = gettime();
-        index_find(idx, example[after % 15]);
+        index_find(idx, (char *) example[after % 15]);
         after = gettime();
         fprintf(stdout, "%llu ", after - before);
 

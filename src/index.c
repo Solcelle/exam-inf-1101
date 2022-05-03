@@ -11,6 +11,7 @@
 struct index
 {
 	list_t *docs;
+	trie_t *trie;
 };
 
 struct document
@@ -31,22 +32,11 @@ struct search_result
 };
 
 
-static inline int cmp_ints(void *a, void *b)
-{
-	return *((int *)a) - *((int *)b);
-}
-
-
-static inline int cmp_strs(void *a, void *b)
-{
-	return strcasecmp((const char *)a, (const char *)b);
-}
-
-
 index_t *index_create()
 {
 	index_t *idx = malloc(sizeof(index_t));
 	idx->docs = list_create(compare_pointers);
+	idx->trie = trie_create();
 	return idx;
 }
 
@@ -99,6 +89,9 @@ void index_add_document(index_t *idx, char *document_name, list_t *words)
 			*((int*)p_index) = i;
 			list_addlast(list, p_index);
 		}
+
+		// Add word to trie
+		trie_insert(idx->trie, key, 0);
 	}
 	// Adds documents info to doc struct
 	document_t *doc = malloc(sizeof(document_t));
@@ -127,16 +120,15 @@ search_result_t *index_find(index_t *idx, char *query)
 	{
 		doc = (document_t*) list_next(iter);
 		if (map_haskey(doc->map, query)) {
-			DEBUG_PRINT("Querey found in doc\n");
 			void *list = map_get(doc->map, query);
 			doc->curr_idx = list;
 			doc->curr_iter = list_createiter(doc->curr_idx);
 			list_addlast(res->docs, doc);
 		}
-		
-		else {
-			DEBUG_PRINT("Query not found in document\n");
-		}
+	}
+	if (list_size(res->docs) == 0)
+	{
+		return NULL;
 	}
 	res->doc_iter = list_createiter(res->docs);
 	res->hit->len = (int) strlen(query);		
@@ -147,7 +139,7 @@ search_result_t *index_find(index_t *idx, char *query)
 
 char *autocomplete(index_t *idx, char *input, size_t size)
 {
-	return NULL;
+	return trie_find(idx->trie, input, size);
 }
 
 
@@ -175,7 +167,6 @@ search_hit_t *result_next(search_result_t *res)
 	if (list_hasnext(res->curr_doc->curr_iter)) {
 		void *i = list_next(res->curr_doc->curr_iter);
 		res->hit->location = *(int*) i;
-		DEBUG_PRINT("location: %i\n", *(int*) i);
 		return res->hit;
 	}
 

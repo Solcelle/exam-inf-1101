@@ -1,3 +1,4 @@
+#define _XOPEN_SOURCE 600
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>
@@ -86,7 +87,7 @@ int test_trie()
     char *res;
     if (catch == true)
     {
-        res = trie_find(trie, "hel");
+        res = trie_find(trie, "hel", 3);
     }
 
     if (caught_segfault == true)

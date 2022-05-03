@@ -150,9 +150,31 @@ int trie_insert(trie_t *trie, char *key, void *value)
 }
 
 
-char *trie_find(trie_t *trie, char *key)
+char *trie_find(trie_t *trie, char *key, size_t size)
 {
-    // Implement this to work with your design.
-    return NULL;
+	node_t *iter = trie->root;
+
+	// Finds the node containing the prefix
+	for (int i = 0; i < (int) size; i++)
+	{
+		if (iter->children[ASCII_TO_IDX(key[i])] == NULL)
+		{
+			return NULL;
+		}
+		iter = iter->children[ASCII_TO_IDX(key[i])];
+	}
+
+	// Finds the last node after the prefix
+	for (int i = 0; i < 26; i++)
+	{
+		if (iter->children[i] != NULL)
+		{
+			iter = iter->children[i];
+			i = 0;
+		}
+	}
+
+	// Returns value of last node
+	return iter->key;
 }
 

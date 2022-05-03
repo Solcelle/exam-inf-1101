@@ -64,17 +64,16 @@ int trie_insert(trie_t *trie, char *key, void *value);
 
 /*
  * Finds a word in the trie.
- * IMPLEMENT THIS TO WORK WITH YOUR DESIGN.
  */
 
 /**
- * @brief Find the closest word starting with prefix.
+ * @brief Find a word in documents starting with prefix.
  * 
  * @param t Pointer to the trie
  * @param prefix The prefix to search for.
- * @return char* The closest word starting with prefix. NULL if no word was found.
+ * @return char* A word form the documents starting with prefix. NULL if no word was found.
  */
-char *trie_find(trie_t *t, char *prefix);
+char *trie_find(trie_t *t, char *prefix, size_t size);
 
 #endif
 

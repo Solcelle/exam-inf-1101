@@ -93,7 +93,7 @@ void ui_display_input(char *input, char *suggestion, int sindex)
 
 char *ui_main(index_t *idx)
 {
-    int row, c;
+    int c;
     char *input = (char *)calloc(201, sizeof(char));
     char *suggestion = NULL;
 
@@ -103,9 +103,7 @@ char *ui_main(index_t *idx)
     int inpos = 0, spos = 0, cur_word_len = 0;
 
     clear();
-    row = getmaxy(stdscr);
-    DEBUG_PRINT("%d", row);
-    ui_display_main_help(row);
+    ui_display_main_help();
     ui_display_input(NULL, NULL, cur_word_len);
 
     while ((c = getch()) != '\n')
@@ -335,7 +333,6 @@ void ui_result(search_result_t *res)
         if (cur_pos == NULL)
         {	
             content = result_get_content(res);
-			DEBUG_PRINT("here");
             content_length = result_get_content_length(res);
             if (content == NULL)
             {
