@@ -77,7 +77,6 @@ void index_destroy(index_t *index);
  * @brief Adds a new document to the index.
  * 
  * @param[in,out] idx The index which to add the new document.
- * @param[in] document_name The name of the document being added.
  * @param[in] words A linked list containing all the words and special characters in the document.
  * 
  * The function adds the content of a new document to the index.
@@ -86,7 +85,7 @@ void index_destroy(index_t *index);
  * The supplied list of words will be deallocated after this function, but not the words.
  * The callie is responsible for deallocating the words after use.
  */
-void index_add_document(index_t *idx, char *document_name, list_t *words);
+void index_add_document(index_t *idx, list_t *words);
 
 
 /**

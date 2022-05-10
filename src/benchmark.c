@@ -70,7 +70,6 @@ int main(int argc, char **argv)
     }
 
     list_t *words = NULL;
-    char *doc_name = "test";
 
 
     TEST_PRINT("RUNNING BENCHMARKS\n");
@@ -91,7 +90,7 @@ int main(int argc, char **argv)
 
         // Test inserts
         before = gettime();
-        index_add_document(idx, doc_name, words);
+        index_add_document(idx, words);
         after = gettime();
         fprintf(stdout, "%d %llu %lf ", nwords, after - before, (double)(after - before) / nwords);
         avg_add += (double)(after - before) / nwords;

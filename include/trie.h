@@ -69,8 +69,9 @@ int trie_insert(trie_t *trie, char *key, void *value);
 /**
  * @brief Find a word in documents starting with prefix.
  * 
- * @param t Pointer to the trie
+ * @param t Pointer to the trie.
  * @param prefix The prefix to search for.
+ * @param size The length of the prefix.
  * @return char* A word form the documents starting with prefix. NULL if no word was found.
  */
 char *trie_find(trie_t *t, char *prefix, size_t size);

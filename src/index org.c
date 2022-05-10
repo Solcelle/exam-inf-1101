@@ -73,8 +73,9 @@ void index_destroy(index_t *index)
  * Adds all the words from the given document to the given index.
  * This function is responsible for deallocating the list and the document name after use.
  */
-void index_add_document(index_t *idx, char *document_name, list_t *words)
+void index_add_document(index_t *idx, list_t *words)
 {	
+	DEBUG_PRINT("here");
 	int i;
 	char *curr;
 	char **content = malloc((sizeof(char *)) * list_size(words));
@@ -122,12 +123,6 @@ void index_add_document(index_t *idx, char *document_name, list_t *words)
 	void *p_doc_len = malloc(sizeof(int));
 	*((int*)p_doc_len) = i;
 	list_addlast(idx->doc_length, p_doc_len);
-
-	// char *s = "the";
-	// void *test_list = map_get(idx->map, s);
-	// printf("number of 'the': %d\n", list_size(test_list));
-
-	free(document_name);
 }
 
 

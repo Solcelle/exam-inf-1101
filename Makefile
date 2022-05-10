@@ -10,7 +10,7 @@ SRC:=$(patsubst %.c,src/%.c, $(SRC))
 
 INCLUDE=include
 
-CFLAGS=-Wall -Wextra -g
+CFLAGS=-Wall -Wextra -g 
 LDFLAGS=-lm -lncurses -DLOG_LEVEL=0
 
 .PHONY: all

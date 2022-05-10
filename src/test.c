@@ -154,7 +154,7 @@ int test_index()
     {
         list_t *words = list_create(cmpfunc);
         tokenize_file("data/hamlet.txt", words);
-        index_add_document(idx, "hamlet", words);
+        index_add_document(idx, words);
     }
 
     if (caught_segfault == true)
@@ -217,7 +217,7 @@ int test_index()
         num_failed++;
         failed("Function returned NULL");
     }
-    else if (cmpfunc((void *)completed, "Hamlet") != 0)
+    else if (cmpfunc((void *)completed, "hamlet") != 0)
     {
         num_failed++;
         failed("Function returned wrong value");

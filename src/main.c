@@ -74,7 +74,7 @@ void initialize_index(char *root_dir)
 
         words = list_create (mystrcmp);
         tokenize_file (fullpath, words);
-        index_add_document (idx, relpath, words);
+        index_add_document (idx, words);
 
         free (fullpath);
 

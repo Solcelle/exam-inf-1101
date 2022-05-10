@@ -170,7 +170,11 @@ char *trie_find(trie_t *trie, char *key, size_t size)
 		if (iter->children[i] != NULL)
 		{
 			iter = iter->children[i];
-			i = 0;
+			i = -1;
+		}
+		if (iter->key != NULL && iter != NULL)
+		{
+			return iter->key;
 		}
 	}
 
