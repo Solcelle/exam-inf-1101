@@ -294,3 +294,11 @@ void *list_getlast(list_t *list)
 {
 	return list->tail->elem;
 }
+
+void list_destroyfull(list_t *list)
+{
+    while (list_size(list)) {
+        free(list_popfirst(list));
+    }
+    list_destroy(list);
+}

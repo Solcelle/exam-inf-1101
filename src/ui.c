@@ -301,7 +301,6 @@ void ui_result(search_result_t *res)
     char **content = result_get_content(res);
     int content_length = result_get_content_length(res);
     search_hit_t *cur_pos = result_next(res);
-	DEBUG_PRINT("here");
     row = getmaxy(stdscr);
     clear();
 

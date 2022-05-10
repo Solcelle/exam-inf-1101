@@ -153,4 +153,11 @@ void *list_next(list_iter_t *iter);
 
 void *list_getlast(list_t *list);
 
+/**
+ * @brief Destroys list and elements.
+ * 
+ * @param list List to be destroyed.
+ */
+void list_destroyfull(list_t *list);
+
 #endif

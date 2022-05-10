@@ -43,23 +43,27 @@ index_t *index_create()
 
 void index_destroy(index_t *index)
 {
-	// Destroy trie
-	trie_destroy(index->trie);
-
 	// Destroy docs
 	list_iter_t *iter = list_createiter(index->docs);
 	while (list_hasnext(iter))
 	{
 		document_t *doc = list_next(iter);
-		map_destroy(doc->map, NULL, NULL);
-		// Free map keys and values
 
-		list_destroy(doc->curr_idx);
+		map_destroy(doc->map, free, (void *) list_destroyfull);
 		list_destroyiter(doc->curr_iter);
 
 		free(doc->words);
+
 		free(doc);
 	}
+
+	// Destroy trie
+	trie_destroy(index->trie);
+
+	// Destory list of docs
+	list_destroy(index->docs);
+
+	free(index);
 }
 
 
@@ -99,7 +103,7 @@ void index_add_document(index_t *idx, list_t *words)
 			map_put(map, key, new_list);
 
 			// Adds word to trie
-			trie_insert(idx->trie, key, 0);
+			trie_insert(idx->trie, key, NULL);
 		}
 		// Else add word to corresponding list in hashmap
 		else
